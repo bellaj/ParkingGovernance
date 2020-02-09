@@ -47,7 +47,7 @@ uint256 public time_start; // access start time
 uint256 public time_end; // access end time
 uint256 public now_=now; // access end time
 
-string location;// device location exp "baby room"
+string location;// device location exp "spot_A"
 mapping(address=>role) white_list;// the whitelisted users
 address public ad_device_owner; //device owner
 
@@ -59,7 +59,7 @@ function revokeToken() public{
    
 }
 
-constructor (string memory device_location,uint256 access_time_start,uint256 access_time_end,uint256 initialSupply) public{ 
+constructor (string memory spot_location,uint256 access_time_start,uint256 access_time_end,uint256 initialSupply) public{ 
     // the constructor initiates the total supply of token access and intial access control parameters (access timeframe, location,...)
    // time is expressed using linux timestamp
         totalSupply = initialSupply * 10 ** uint256(decimals);
@@ -105,9 +105,9 @@ event allow_access_event(bool allowed);
 
 function access_control_policy(address requester, string memory location_)public returns (bool) { // this function represents an example of access control policy
    
-   //herein we take a single example of a policy controling access to a location we call spot_A , within a defined timeframe
+   //herein we take a single example of a policy controling access to a location (e.g spot_A), within a defined timeframe
    //the request is recieved in a defined intervall for accessing the defined location, then the requester get his access token. 
-    if(keccak256(abi.encodePacked(location_))==keccak256(abi.encodePacked("spot_A"))&& now<time_end && now>time_start)
+    if(keccak256(abi.encodePacked(location_))==keccak256(abi.encodePacked(location))&& now<time_end && now>time_start)
    
     {
                 transfer(requester,1);// transfer 1 token to the requester
