@@ -15,7 +15,7 @@ contract Token{
 
 
     function transfer(address _to, uint256 _value) public {
-        _to=msg.sender;
+    
         _transfer( admin, _to, _value);
     }
 
