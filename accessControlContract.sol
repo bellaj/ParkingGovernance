@@ -47,7 +47,7 @@ uint256 public time_start; // access start time
 uint256 public time_end; // access end time
 uint256 public now_=now; // access end time
 
-string location;// device location exp "spot_A"
+string public location;// device location exp "spot_A"
 mapping(address=>role) white_list;// the whitelisted users
 address public ad_device_owner; //device owner
 
