@@ -68,7 +68,7 @@ constructor (string memory spot_location,uint256 access_time_start,uint256 acces
         white_list[ad_device_owner]=role.Ressource_Owner;
         time_start=access_time_start;
         time_end=access_time_end;
-        location=device_location;
+        location=spot_location;
         balanceOf[ad_device_owner] = totalSupply;
        
 }    
