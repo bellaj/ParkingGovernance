@@ -55,7 +55,7 @@ enum role{ //we user User as a global role, but you can define as roles as you n
     Ressource_Owner,User,Service_Provider
 }
 
-function revokeToken() public{
+function revokeToken() public only_ressource_owner{
    
 }
 
@@ -121,13 +121,13 @@ function access_control_policy(address requester, string memory location_)public
 
 }
 
-function Access_Request( string memory Dlocation) public returns (bool){ 
+function Access_Request( string memory location_) public returns (bool){ 
 //Access to spot_A is controlled by an IOT object (RaspberryPi), we name this later raspberryA
  // the requester call this function to request an access token to get into spot_A
  
     if(white_list[msg.sender]==role.User) //role check
     {
-        access_control_policy(msg.sender, Dlocation);
+        access_control_policy(msg.sender, location_);
    
     return true;
     }
